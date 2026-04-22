@@ -1,13 +1,17 @@
 {
-  "name": "threejs-journey-exercise",
+  "homepage": "https://swrjnthjr.github.io/hunted_house",
+  "name": "threejs-hunted-house",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "vite": "^6.2.2",
     "vite-plugin-restart": "^0.4.2"
   },
