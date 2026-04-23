@@ -17,20 +17,28 @@ const canvas = document.querySelector("canvas.webgl");
 // Scene
 const scene = new THREE.Scene();
 
+// Helper function to get asset path
+const getAssetPath = (path) => {
+  const base = import.meta.env.BASE_URL || "/hunted_house/";
+  return base + path;
+};
+
 // Textures
 const textureLoader = new THREE.TextureLoader();
-const floorTexture = textureLoader.load("/floor/alpha.jpg");
+const floorTexture = textureLoader.load(getAssetPath("floor/alpha.jpg"));
 const floorColorTexture = textureLoader.load(
-  "/floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_diff_1k.jpg",
+  getAssetPath("floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_diff_1k.jpg"),
 );
 const floorARMTexture = textureLoader.load(
-  "/floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_arm_1k.jpg",
+  getAssetPath("floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_arm_1k.jpg"),
 );
 const floorNormalTexture = textureLoader.load(
-  "/floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_nor_gl_1k.jpg",
+  getAssetPath(
+    "floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_nor_gl_1k.jpg",
+  ),
 );
 const floorDisTexture = textureLoader.load(
-  "/floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_disp_1k.jpg",
+  getAssetPath("floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_disp_1k.jpg"),
 );
 
 floorColorTexture.wrapS = THREE.RepeatWrapping;
@@ -123,16 +131,16 @@ const house = new THREE.Group();
 scene.add(house);
 
 const wallColorTexture = textureLoader.load(
-  "/wall/old_stone_wall_1k/old_stone_wall_diff_1k.jpg",
+  getAssetPath("wall/old_stone_wall_1k/old_stone_wall_diff_1k.jpg"),
 );
 const wallARMTexture = textureLoader.load(
-  "/wall/old_stone_wall_1k/old_stone_wall_arm_1k.jpg",
+  getAssetPath("wall/old_stone_wall_1k/old_stone_wall_arm_1k.jpg"),
 );
 const wallNormalTexture = textureLoader.load(
-  "/wall/old_stone_wall_1k/old_stone_wall_nor_gl_1k.jpg",
+  getAssetPath("wall/old_stone_wall_1k/old_stone_wall_nor_gl_1k.jpg"),
 );
 const wallDisTexture = textureLoader.load(
-  "/wall/old_stone_wall_1k/old_stone_wall_disp_1k.jpg",
+  getAssetPath("wall/old_stone_wall_1k/old_stone_wall_disp_1k.jpg"),
 );
 
 wallColorTexture.wrapS = THREE.RepeatWrapping;
@@ -180,16 +188,16 @@ walls.position.y = 1.25;
 house.add(walls);
 // Roof Textures
 const roofColorTexture = textureLoader.load(
-  "/roof/roof_09_1k/roof_09_diff_1k.jpg",
+  getAssetPath("roof/roof_09_1k/roof_09_diff_1k.jpg"),
 );
 const roofARMTexture = textureLoader.load(
-  "/roof/roof_09_1k/roof_09_arm_1k.jpg",
+  getAssetPath("roof/roof_09_1k/roof_09_arm_1k.jpg"),
 );
 const roofNormalTexture = textureLoader.load(
-  "/roof/roof_09_1k/roof_09_nor_gl_1k.jpg",
+  getAssetPath("roof/roof_09_1k/roof_09_nor_gl_1k.jpg"),
 );
 const roofDisTexture = textureLoader.load(
-  "/roof/roof_09_1k/roof_09_disp_1k.jpg",
+  getAssetPath("roof/roof_09_1k/roof_09_disp_1k.jpg"),
 );
 
 roofColorTexture.wrapS = THREE.RepeatWrapping;
@@ -238,15 +246,19 @@ roof.position.y = 2.5 + 0.75;
 roof.rotation.y = Math.PI * 0.25;
 house.add(roof);
 // Door Textures
-const doorColorTexture = textureLoader.load("/door/color.jpg");
-const doorAlphaTexture = textureLoader.load("/door/alpha.jpg");
+const doorColorTexture = textureLoader.load(getAssetPath("door/color.jpg"));
+const doorAlphaTexture = textureLoader.load(getAssetPath("door/alpha.jpg"));
 const doorAmbientOcclusionTexture = textureLoader.load(
-  "/door/ambientOcclusion.jpg",
+  getAssetPath("door/ambientOcclusion.jpg"),
 );
-const doorHeightTexture = textureLoader.load("/door/height.jpg");
-const doorNormalTexture = textureLoader.load("/door/normal.jpg");
-const doorMetalnessTexture = textureLoader.load("/door/metalness.jpg");
-const doorRoughnessTexture = textureLoader.load("/door/roughness.jpg");
+const doorHeightTexture = textureLoader.load(getAssetPath("door/height.jpg"));
+const doorNormalTexture = textureLoader.load(getAssetPath("door/normal.jpg"));
+const doorMetalnessTexture = textureLoader.load(
+  getAssetPath("door/metalness.jpg"),
+);
+const doorRoughnessTexture = textureLoader.load(
+  getAssetPath("door/roughness.jpg"),
+);
 
 //door
 const door = new THREE.Mesh(
@@ -269,16 +281,16 @@ house.add(door);
 
 // Bushes
 const bushColorTexture = textureLoader.load(
-  "/leaves_forest_ground_1k/leaves_forest_ground_diff_1k.jpg",
+  getAssetPath("leaves_forest_ground_1k/leaves_forest_ground_diff_1k.jpg"),
 );
 const bushARMTexture = textureLoader.load(
-  "/leaves_forest_ground_1k/leaves_forest_ground_arm_1k.jpg",
+  getAssetPath("leaves_forest_ground_1k/leaves_forest_ground_arm_1k.jpg"),
 );
 const bushNormalTexture = textureLoader.load(
-  "/leaves_forest_ground_1k/leaves_forest_ground_nor_gl_1k.jpg",
+  getAssetPath("leaves_forest_ground_1k/leaves_forest_ground_nor_gl_1k.jpg"),
 );
 const bushDisTexture = textureLoader.load(
-  "/leaves_forest_ground_1k/leaves_forest_ground_disp_1k.jpg",
+  getAssetPath("leaves_forest_ground_1k/leaves_forest_ground_disp_1k.jpg"),
 );
 
 bushColorTexture.wrapS = THREE.RepeatWrapping;
@@ -330,16 +342,16 @@ bush4.position.set(-1, 0.05, 2.6);
 });
 
 const graveColorTexture = textureLoader.load(
-  "/plastered_stone_wall_1k/plastered_stone_wall_diff_1k.jpg",
+  getAssetPath("plastered_stone_wall_1k/plastered_stone_wall_diff_1k.jpg"),
 );
 const graveARMTexture = textureLoader.load(
-  "/plastered_stone_wall_1k/plastered_stone_wall_arm_1k.jpg",
+  getAssetPath("plastered_stone_wall_1k/plastered_stone_wall_arm_1k.jpg"),
 );
 const graveNormalTexture = textureLoader.load(
-  "/plastered_stone_wall_1k/plastered_stone_wall_nor_gl_1k.jpg",
+  getAssetPath("plastered_stone_wall_1k/plastered_stone_wall_nor_gl_1k.jpg"),
 );
 const graveDisTexture = textureLoader.load(
-  "/plastered_stone_wall_1k/plastered_stone_wall_disp_1k.jpg",
+  getAssetPath("plastered_stone_wall_1k/plastered_stone_wall_disp_1k.jpg"),
 );
 // Graves
 const graves = new THREE.Group();
